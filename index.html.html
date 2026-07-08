@@ -1,0 +1,2284 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>სანაპირო — მენიუ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Noto+Sans+Georgian:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B3322;
+    --navy-deep:#0b2129;
+    --cream:#f3ecdc;
+    --sand:#e9dfc6;
+    --teal:#3e6e6b;
+    --gold:#1B3322;
+    --rust:#C29B6D;
+    --line: rgba(18,48,60,0.16);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    background:var(--cream);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(18,48,60,0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+    font-family:'Noto Sans Georgian','Work Sans',sans-serif;
+    color:var(--navy-deep);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 20px 80px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    padding:56px 0 36px;
+    text-align:center;
+    position:relative;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    font-size:11px;
+    color:var(--teal);
+    margin-bottom:18px;
+  }
+
+  h1.brand{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(52px, 11vw, 96px);
+    line-height:0.95;
+    margin:0;
+    color:var(--navy);
+    letter-spacing:-0.01em;
+  }
+
+  .brand-ka-accent{
+    display:inline-block;
+    position:relative;
+  }
+
+  /* brand + logo wrapper */
+  .brand-wrap{display:inline-flex;align-items:center;gap:12px;justify-content:center;}
+  .brand-logo{height:clamp(40px,6vw,72px);width:auto;object-fit:contain;border-radius:6px;box-shadow:0 1px 0 rgba(18,48,60,0.06);}
+
+  .tagline{
+    margin-top:14px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:18px;
+    color:var(--rust);
+  }
+
+  .contact-strip{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px 26px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--navy);
+    opacity:0.85;
+  }
+  .contact-strip span{white-space:nowrap;}
+  .contact-strip .dot{color:var(--gold);}
+  .contact-strip svg{
+    stroke:var(--teal);
+    flex-shrink:0;
+  }
+
+  /* horizon divider — the signature element */
+  .horizon{
+    width:100%;
+    height:34px;
+    margin:38px 0 4px;
+  }
+
+  /* ---------- CATEGORY NAV ---------- */
+  nav.dock{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--cream);
+    padding:14px 0;
+    margin:0 -20px;
+    padding-left:20px;
+    padding-right:20px;
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    white-space:nowrap;
+    scrollbar-width:none;
+  }
+  nav.dock::-webkit-scrollbar{display:none;}
+
+  nav.dock button{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--navy);
+    padding:9px 16px;
+    border-radius:999px;
+    margin-right:8px;
+    cursor:pointer;
+    transition:all .2s ease;
+  }
+  nav.dock button:hover{border-color:var(--teal);}
+  nav.dock button.active{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:var(--cream);
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section.category{
+    padding-top:52px;
+    scroll-margin-top:70px;
+  }
+  section.category:first-of-type{padding-top:44px;}
+
+  .cat-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:6px;
+  }
+
+  .cat-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--gold);
+    border:1px solid var(--gold);
+    border-radius:50%;
+    width:26px;
+    height:26px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+
+  h2.cat-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(28px,4.5vw,38px);
+    margin:0;
+    color:var(--navy);
+  }
+
+  .cat-sub{
+    font-size:13px;
+    color:var(--teal);
+    margin:2px 0 26px 42px;
+    font-style:italic;
+  }
+
+  .dish-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+  }
+  @media (max-width:640px){
+    .dish-grid{grid-template-columns:1fr;}
+  }
+
+  .dish{
+    display:flex;
+    gap:14px;
+    background:rgba(255,255,255,0.35);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:14px;
+  }
+
+  .dish-photo{
+    width:72px;
+    height:72px;
+    flex-shrink:0;
+    border-radius:8px;
+    background:rgba(255,255,255,0.8);
+    border:1px solid rgba(18,48,60,0.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    color:rgba(18,48,60,0.4);
+    line-height:1.3;
+    padding:4px;
+    overflow:hidden;
+  }
+
+  .dish-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:2px;
+    display:block;
+    filter:brightness(0.9) saturate(1.1) contrast(1.05);
+  }
+
+  .dish-body{flex:1; min-width:0;}
+
+  .dish-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+  }
+
+  .dish-name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:16.5px;
+    color:var(--navy-deep);
+  }
+
+  .dish-price{
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    color:var(--rust);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  .dish-desc{
+    margin-top:5px;
+    font-size:12.5px;
+    line-height:1.5;
+    color:var(--navy);
+    opacity:0.72;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:70px;
+    text-align:center;
+    padding-top:34px;
+    border-top:1px solid var(--line);
+  }
+
+  .footer-mark{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--teal);
+  }
+
+  .footer-contact{
+    margin-top:12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--navy);
+    opacity:0.8;
+    line-height:1.9;
+  }
+
+  .footer-contact svg{
+    stroke:var(--teal);
+    flex-shrink:0;
+  }
+
+  /* edit note badge — remove this block once you finish editing */
+  .edit-note{
+    max-width:920px;
+    margin:0 auto;
+    padding:14px 20px;
+    background:var(--gold);
+    color:var(--navy-deep);
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<div class="edit-note"></div>
+
+<div class="page">
+
+  <header>
+    <div class="eyebrow">ქობულეთი ·რესტორანი სანაპირო</div>
+    <div class="brand-wrap">
+      <h1 class="brand">სანაპირო</h1>
+      <img src="https://i.ibb.co/5g0HzNRy/logo-1-e1765898129746.png" alt="სანაპირო ლოგო" class="brand-logo">
+    </div>
+    <div class="tagline">სუფრა, რომელიც ზღვას უყურებს</div>
+    <div class="contact-strip">
+      <div style="display:flex; align-items:center; gap:4px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>თამარ მეფის 1, ქობულეთი</span>
+      </div>
+      <span class="dot">·</span>
+      <div style="display:flex; align-items:center; gap:4px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>514 62 09 09 · 558 313 186</span>
+      </div>
+    </div>
+
+    <svg class="horizon" viewBox="0 0 920 34" preserveAspectRatio="none">
+      <path d="M0,20 C 120,6 220,30 340,16 C 460,4 560,28 680,14 C 800,4 860,22 920,12"
+            fill="none" stroke="#12303c" stroke-width="1.4" opacity="0.55"/>
+      <path d="M0,26 C 140,14 240,34 360,22 C 480,10 580,30 700,20 C 820,12 870,26 920,18"
+            fill="none" stroke="#c99a3e" stroke-width="1.4" opacity="0.6"/>
+    </svg>
+  </header>
+
+  <nav class="dock" id="dock">
+    <button data-target="cold-starters" class="active">ცივი კერძები Холодные Блюдо</button>
+    <button data-target="salads">ცომეული мучные блюда</button>
+    <button data-target="hot-dishes">ცხელი კერძები Горячие блюда</button>
+    <button data-target="grill">წვნიანი კერძები Супы</button>
+    <button data-target="desserts">კერძები მაყალზე Блюда на гриле</button>
+    <button data-target="cold-drinks">თევზეული,Рыба</button>
+    <button data-target="hot-drinks">ცხელი სასმელები</button>
+    <button data-target="hot-drinks">დილის საუზმე завтрак</button>
+    <button data-target="cheeses">სოუსები</button>
+    <button data-target="cheeses">დესერტი</button>
+    <button data-target="cheeses">გამაგრილებელი სასმელი</button>
+    <button data-target="cheeses">coffe menu</button>
+    <button data-target="cheeses">cocktail</button>
+  </nav>
+  <!-- ახალი სექცია -->
+<section class="category" id="cheeses">
+  <div class="cat-head">
+    <span class="cat-num">08</span> <!-- კატეგორიის ნომერი -->
+    <h2 class="cat-title">cocktail</h2>
+  </div>
+  <p class="cat-sub">cocktail</p>
+  <div class="dish-grid">
+    <!-- აქ ჩაჯდება კერძები (dish ბლოკები) ისევე, როგორც სხვაგანაა -->
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDCcNBpHMK23N42KxNQqRrKAUxO3rKrkGmMmwFMymnTsl99GrZTBavwvg&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ვაშლის მარტინი-Яблочный мартини</span><span class="dish-price">23₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2_Q0mB6Minb23OPO4yXB0TsuJG7umdHsgVQf8eSLoSQ&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">შავი რუსი-Черный русский</span><span class="dish-price">16₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe93lorYd9bMqOIpHjp_vuxwfSzxI6fN7jaBJq4jc6COmZAilVHJYoRWE&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">თეთრი რუსი-Белый русский</span><span class="dish-price">18₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSVw_Gs6K9i4hxSpllLcbzHiTqRmBhhUzIyisMEwW3sZNOdlTsyStUowg&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">კოსმოპოლიტელი-Космополитан</span><span class="dish-price">19₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSCxibkVJVf8uay_NoQpBaTPGbUDCYo5Wz7MynywHExA&s" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">კუბა ლიბრე-Куба Либре</span><span class="dish-price">16₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMZyjI23qvPJKsj8JqnHDNTl_9EyVkfwJ_YlK6dEy4MQ&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ესპრესო მარტინი-Эспрессо Мартини</span><span class="dish-price">20₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9J3B8lR-14WOhQc2EAdrdLNaWOQhJsWy-2d1xAADSZQ&s" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ლონგ აილენდ აისთი-Лонг-Айленд Айс</span><span class="dish-price">23₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqd31fsRFZ-HwRSDXv1Oc6EzoAkZa6feZyI6jpruEF2zZMVpjwizmEytA&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">B-52</span><span class="dish-price">16₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLayX-jnHtcYECOJ4hkxwPsHpKT57oqW_55x3BDvEgmesiJNfHDHEAfl29&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ლონგ აილენდი ენერჯი-Long Island Energy</span><span class="dish-price">27₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX14ZD9qQhnqlpQekZ9QTxON0ITl71X-IeRnP5g7Bnb94ApEuieNHq0b9_&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ნეგრონი-Негрони</span><span class="dish-price">17₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTroherioBjjkGrYGtWPmTQ4V3_X8RTutA4vsn7U7xbQ&s" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">მოჰიტო-Мохито</span><span class="dish-price">18₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAZ8H_a3qvmqjiu7VH_rtyN7xK7QYb30A9welJQh7F9-k5UqvQ7OVyDHM&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">აპეროლ შპრიცი-Апероль Спритц</span><span class="dish-price">20₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgfIsdRp9b1pyPgrfjUIsnMcQVb0v0YAgkGo1Joj_CMA&s" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">პინაკოლადა-Пина Колада</span><span class="dish-price">20₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlFMusUeXrXFurtsYBUyZVR0FkBlUs7SCywDN2dW2uVIps1Dc6UwPuUsc&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ატვიორკა-Атиорка</span><span class="dish-price">15₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://healthy-food-near-me.com/wp-content/uploads/2022/02/bloody-mary-cocktail-recipe.webp" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">სისხლიანი მერი-Кровавая Мэри</span><span class="dish-price">22₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://lui.coffee/wp-content/uploads/2022/06/gin-tonic-scaled.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ჯინ ტონიკ-Джин с тоником</span><span class="dish-price">18₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx5Eb1Nn6XxlBWn4RoVqMHeEi926kTuvxgVDDOtTTX66kxvCYB9BpUE5k&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ვისკი საუერი-Виски Сауэр</span><span class="dish-price">20₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLmEIQrXm_l29AEEx4KskFwXYjT4T5N6tWLb6Y57eZe8tqf2S54pPmyBw&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">იაგერ საუერი-Ягер Зауэр</span><span class="dish-price">20₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://bernard.ge/wp-content/uploads/2021/05/amaretto.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">დისარონო საუერი-Дисарон Зауэр</span><span class="dish-price">22₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRryVDk5fRhV6x-sVrdRVOzGV2IIhpsdGx8Q8jebK4nHu_OXMO4fd6pLfw&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">მოჰიტო უალკოჰოლო-Мохито безалкогольный</span><span class="dish-price">15₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://barlist.ru/media/uploads/recipe/2228/morning_star.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">დილის ვარსკვლავი უალკოჰოლო-Morning Star Безалкогольный</span><span class="dish-price">15₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-1CkRl744PuA_S0af9xFjGDHAKa2mJtVwM5mYQoM-MfqLbu0Wk8fdLoxF&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">სახლის ლიმონათი-Домашний лимонад 1 л</span><span class="dish-price">20₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR76DZMa38rabtDK3-wVYO_-ewRm-lSsgB-H9qt9S3viKh7fModxlhY8Q0a&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">საფირმო ლიმონათი სანაპირო-Фирменный лимонад sanapiro</span><span class="dish-price">10/25₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://static.vkusnyblog.com/full/uploads/2008/02/molochny-kokteil.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">მილკ შეიკი-Молочный коктейль</span><span class="dish-price">10₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+  </div>
+</section></p>
+  <!-- ახალი სექცია -->
+<section class="category" id="cheeses">
+  <div class="cat-head">
+    <span class="cat-num">08</span> <!-- კატეგორიის ნომერი -->
+    <h2 class="cat-title">coffe menu</h2>
+  </div>
+  <p class="cat-sub">coffe menu</p>
+  <div class="dish-grid">
+    <!-- აქ ჩაჯდება კერძები (dish ბლოკები) ისევე, როგორც სხვაგანაა -->
+    <div class="dish">
+      <div class="dish-photo"><img src="https://www.sharmispassions.com/wp-content/uploads/2012/07/espresso-coffee-recipe04-500x500.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">espresso</span><span class="dish-price">7.00₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://cdn.shopify.com/s/files/1/0669/0966/7619/files/americano-coffee-in-white-cup-crema-on-wood-table-wrexham-bean.webp?v=1745258094" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">americano</span><span class="dish-price">7.00₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://lifeboostcoffee.com/cdn/shop/articles/Americano_Coffee_With_Milk.jpg?v=1648647484" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">americano with milk</span><span class="dish-price">7.00₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSyN-I3JIdu00LQeFy_B10KWCTWEEta5yYiEyUSIwKVQ1GVzvHXPdLg74&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">americano XL</span><span class="dish-price">7.00₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLYJm2dWOUQt3NLktr0BbLkWQQh6C0VENqzPDuEW0pJ4vOmbOzlHYzz-OA&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">americano XXL</span><span class="dish-price">7.00₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8yuUzLHs6OTwLDFi0fv4pD3ohiev8RCNZTW_rlt_DWw&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">cappuccino</span><span class="dish-price">10₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://img.magnific.com/free-psd/coffee-cup-icon-isolated-3d-render-illustration_47987-8773.jpg?semt=ais_hybrid&w=740&q=80" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">cappuccino XXL</span><span class="dish-price">10₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUUh5e-4Pq-zqGREZfoWtVc7ONiQPWKP0sr8mzZTKZp66iCpOrA1hedfQ&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">latte XXL</span><span class="dish-price">10₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhtZ5WSfidHd3n5hQPPHiW2Iy9Ui2vjdK-Wgkdc6aer0-xGRJtt8dHnJM7&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">latte macciato</span><span class="dish-price">10₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://bakingmischief.com/wp-content/uploads/2017/04/chocolate-milk-for-one-image-feature.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">chocolate with milk</span><span class="dish-price">7₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://bakingmischief.com/wp-content/uploads/2017/04/chocolate-milk-for-one-image-feature.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">chocolate</span><span class="dish-price">7₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROQ8VaC8Njg6_4mj-2KTlGgQjVEoSCwlV4BdszwxZlIw&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">milk</span><span class="dish-price">7₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnNDH5eYtjFN1TNbwWYkBdcU4o7hJoFnPljT2eF1VEyEvz9yd3bj6ud-Hh&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">cacao</span><span class="dish-price">7₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7Wni114rcaYxM0ZrHYBuDWK35zfMzk8ICGfD2SvdG1mRaxUgIJz1C0FM&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">hot water</span><span class="dish-price">7₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxf3Hyh_5f6h_o_KALaS0Yv-qYA6hLk4bJfFFfD9Kktg&s" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">coffe with chokolate</span><span class="dish-price">7₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- ახალი სექცია -->
+<section class="category" id="cheeses">
+  <div class="cat-head">
+    <span class="cat-num">08</span> <!-- კატეგორიის ნომერი -->
+    <h2 class="cat-title">გამაგრილებელი სასმელი Безалкогольный напиток</h2>
+  </div>
+  <p class="cat-sub"></p>
+  <div class="dish-grid">
+    <!-- აქ ჩაჯდება კერძები (dish ბლოკები) ისევე, როგორც სხვაგანაა -->
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD-2sguhiAiv8ECXPuUdQxUGGV-q7g_M14jaRBkMlgxM9IPU-DO2gJuXU&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ბორჯომი 0.5L,borjomi 0.5L</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+     <div class="dish">
+      <div class="dish-photo"><img src="https://gemrielia.ge/media/_thumb/uploads/2023/03-13/vashlis-kompoti-1678704833.webp" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">კომპოტი,Компот,Compote</span><span class="dish-price">15₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+     <div class="dish">
+      <div class="dish-photo"><img src="https://mcdonalds.ge/51e7bf1eafbc-resized.png" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">კოკა-კოლა 0,33მლ,Кока-кола 0,33 млCoca-Cola 0.33 ml</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+     <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_x7Pw_w6ypoDB4wgGCFTIv-OBhccGDDgco9dPAEeNABSX1El_rfKYchU&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ლიმონათი 0,5ლ,Лимонад 0,5 л,Lemonade 0.5l</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+     <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9gWIkfGh7521v95T3kM4Wkhe7AV3XhK38t_50l_hG_ovckOx5wYajSI6D&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ნატურალური წვენი 1ჭ,1 стакан натурального сока,1 cup natural juice </span><span class="dish-price">5₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+     <div class="dish">
+      <div class="dish-photo"><img src="https://yoga.ge/imgN/journalphoto/79.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">წყალი 0,5ლ,Вода,Water</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+     <div class="dish">
+      <div class="dish-photo"><img src="https://rogor.ge/media/uploads/2025/08-13/civiqava-1755068570.png" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ცივი ყავა,Холодный кофе,Cold coffee</span><span class="dish-price">8₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+     <div class="dish">
+      <div class="dish-photo"><img src="https://gemrielia.ge/media/uploads/m_shengelia3%40cu.edu.ge/2021/06/09/gliase_civiyava.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ცივი ყავა ნაყინით,Холодный кофе с мороженым,Cold coffee with ice cream</span><span class="dish-price">10₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- ახალი სექცია -->
+<section class="category" id="cheeses">
+  <div class="cat-head">
+    <span class="cat-num">08</span> <!-- კატეგორიის ნომერი -->
+    <h2 class="cat-title">დესერტი</h2>
+  </div>
+  <p class="cat-sub">დესერტი</p>
+  
+  <div class="dish-grid">
+    <!-- აქ ჩაჯდება კერძები (dish ბლოკები) ისევე, როგორც სხვაგანაა -->
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJuHhoj8vn9N-XH_tO35DicsZ3DT-s5xyL7DcGTQHWBoNdAlPeUyKp8Fy6&s=10" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ხილის ასორტი,Разнообразные фрукты,Assorted fruit</span><span class="dish-price">20/35₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://kulinaria.ge/media/recipe-images/2017/06/Sokoladis_nayini.jpg" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ნაყინი,Мороженое,Ice cream</span><span class="dish-price">7₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  <!-- ახალი სექცია -->
+<section class="category" id="cheeses">
+  <div class="cat-head">
+    <span class="cat-num">08</span> <!-- კატეგორიის ნომერი -->
+    <h2 class="cat-title">სოუსები Соусы</h2>
+  </div>
+  <p class="cat-sub">სოუსები Соусы</p>
+  
+  <div class="dish-grid">
+    <!-- აქ ჩაჯდება კერძები (dish ბლოკები) ისევე, როგორც სხვაგანაა -->
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8U_QvwyQC6fMdDhbYIwVSATlr9XYTw6P2KBw5sgjAIIO4c9hGwF5TxShU&s=10"ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">კეჩუპი,Кетчуп,Ketchup</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://gemrielia.ge/media/_thumb/uploads/2024/11-12/adjika-nigvzit1-1731420266.webp" alt="ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">აჯიკა,Аджика,Adjika</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+  <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxWf6YW9-I7popI6MpxUM1FObKWcDKNvuJNgXei26ERA&s=10"ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">მაიონეზი,Майонез,Mayonnaise</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+    <div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqqRtcE1BbculI5pyV5chpwoRLDCLUt81sLm6IjsIOJfu_r3tTpfgU8IZu&s=10"ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ტარტარის სოუსი,соус тартар,Tartar sauce</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div><div class="dish">
+      <div class="dish-photo"><img src="https://sushiroom.ge/wp-content/uploads/2021/04/%E1%83%A9%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1-%E1%83%A1%E1%83%9D%E1%83%A3%E1%83%A1%E1%83%98-%E1%83%A2%E1%83%99%E1%83%91%E1%83%98%E1%83%9A%E1%83%98-50-%E1%83%9B%E1%83%9A..jpg"ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ტკბილი სოუსი,Сладкий соус,Sweet sauce</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div><div class="dish">
+      <div class="dish-photo"><img src="https://cdn.1tv.ge/app/uploads/2023/09/1694847841-%E1%83%A2%E1%83%A7%E1%83%94%E1%83%9B%E1%83%90%E1%83%9A%E1%83%98.jpg"ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">ტყემალი,Ткемали,Tkemali</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div><div class="dish">
+      <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2m2-UdXwi0iNU_ppzrj1r2wlG9GSIUBo-L2NcgszWRXBGpta4FgWmrag&s=10"ფოტო"></div>
+      <div class="dish-body">
+        <div class="dish-top"><span class="dish-name">საწებელი,Соус,Sauce</span><span class="dish-price">3₾</span></div>
+        <div class="dish-desc">აღწერა...</div>
+      </div>
+    </div>
+</section>
+  
+  <!-- COLD STARTERS -->
+  <section class="category" id="cold-starters">
+    <div class="cat-head">
+      <span class="cat-num">01</span>
+      <h2 class="cat-title">ცივი კერძები Холодные Блюдо.cold appetizers</h2>
+    </div>
+    <p class="cat-sub">სუფრის დასაწყისი</p>
+    <div class="dish-grid">
+      <div class="dish">
+        <div class="dish-photo"><img src="https://cdn.loveandlemons.com/wp-content/uploads/2024/07/avocado-salad-1.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ავოკადოს სალათი Салат из авокадо.avocado salad</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://ifoodreal.com/wp-content/uploads/2018/04/FG-avocado-salad.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ავოკადოს კლასიკური სალათი,Классический салат из авокадо,Classic avocado salad</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW62OmzyMay8Mx10RY7s5T6IrIuyatfpmSorjjZt65UcfAWXkybtFrB8Yx&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">აკროშკა,Акрошка,Acroshka</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://happykitchen.rocks/wp-content/uploads/2015/10/Georgian-Eggplant-Rollups-on-a-Plate-1.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბადრიჯანი ნიგვზით,Баклажаны с грецкими орехами,Eggplant with walnuts</span><span class="dish-price">16₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://cleanfoodcrush.com/wp-content/uploads/2019/04/Clean-Greek-Style-Chickpea-Salad.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბერძნული სალათი ძაძიკის სოუსით,Греческий салат с соусом цацики,Greek salad with tzatziki sauce</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJtiyZo8U-sCz3yuXPHi64K1yj0xCM3DpsDs1lA-k8yE2u17SONIawfIOZ&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბოსტნეულის ბუკეტი,Овощной букет,Vegetable bouquet</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIimBN7jTIEleQYqUWHEMO4Wzg_jv-SKUgyL7hQL10eWlxH1FtG4inWvs&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბოსტნეულის სალათი,Овощной салат,Vegetable salad</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%94%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%9A%E1%83%90%E1%83%97%E1%83%98.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ენის სალათი,Салат из языка,Tongue salad</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%98%E1%83%A1%E1%83%9E%E1%83%90%E1%83%9C%E1%83%90%E1%83%AE%E1%83%98_%E1%83%9C%E1%83%98%E1%83%92%E1%83%95%E1%83%96%E1%83%98%E1%83%97_orUZgYi.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ისპანახი ნიგვზით,Шпинат с грецкими орехами,Spinach with walnuts</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDRhk2TYmvBxm7758gV24ib4XjMb42ZzLA1yIB0JFMnnge85l-k3_eYBg&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კაიმაღი,Каймаг,Kaimagh</span><span class="dish-price">18₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://tbiliselebi.ge/files/2021/06/10/1986/kombostosa-da-kiborchkhalas-chkhirebis-salata_w_h.jpeg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კიბორჩხალას სალათი,Салат из краба,Crab salad</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://nostal.ge/wp-content/uploads/2018/04/kulinaria-kombostos-salata.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კომბოსტოს სალათი ნიგვზით,Капустный салат с грецкими орехами,Cabbage salad with walnuts</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%99%E1%83%98%E1%83%A2%E1%83%A0%E1%83%98-%E1%83%9E%E1%83%9D%E1%83%9B%E1%83%98%E1%83%93%E1%83%95%E1%83%A0%E1%83%98%E1%83%A1_%E1%83%A1%E1%83%90%E1%83%9A%E1%83%90%E1%83%97%E1%83%98_F5fZnd0.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კიტრი პომიდორის სალათი,Салат из огурцов и помидоров,Cucumber tomato salad</span><span class="dish-price">14₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div><div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/uploads/2026/03-16/kitri-pomidvris-salata-1773642874.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კიტრი პომიდორის სალათი ნიგვზით,Салат из огурцов и помидоров с грецкими орехами,Cucumber tomato salad with walnuts</span><span class="dish-price">16₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+           </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://img.postershop.me/11223/1fecd94c-d096-459d-8ae9-fd11b1b03061_image.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მჟავის ასორტი,Различные кислоты,Assorted acids</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjUE5ebNGCaD7QUOCzpOxB7AKSaxA2FFBjOUW8_ACodv5ZgOlfIBAYp-8t&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ნადუღი,НаДуГи,nadugi</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN0dpb9vxm_GRjXrnBTEktZWPaed0Ir5hrf_MijwHuVoCNqbBYIaZplEqu&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ოლივიე,Оливье,Olivier</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSC32XUy2s-IpWNCjaov5-c6cXcfoTByTb9lZCiSU3B7TqMUhYKuPZ5orl&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მწვანე ლობიო ნიგვზით,Зеленая фасоль с грецкими орехами,Green beans with walnuts</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://myhit.ge/uploads/posts/2023-05/damushavebuli.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სალათი ფანტაზია,Салатная фантазия,Salad fantasy</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTc0mpDcK8y5OcFJ3DPPqd9bGCKjhsRWBRd6acE5CCaB4rl_GkQRnHGPUF&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">საქონლის ენა,Язык животных,Animal language</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://tbiliselebi.ge/files/2021/05/31/1849/gul-ghvidzlis-salati_w_h.jpeg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">საქონლის გულის სალათი,Салат из говяжьих сердечек,Beef heart salad</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTapJx-CYef5dWI31LYrdV-j8bEFVXhkLqZUYnpK71ftByEjYeOd-vnfson&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">საქონლის გულღვიძლი ნიგვზით,Говяжье сердце с грецкими орехами,Beef heart with walnuts</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq1PF4gVNUmcm_bevr4w1HaeKOKEjbu12Yx-WZZ9TLNp8dMyGuQeHS4vM&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სოკოს სალათი,Грибной салат,Mushroom salad </span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7nolgCf39fKQGuf-qPa5eKkNh2SG2qpMXEYjlXL0D8CQYQOF-h2mCNxw&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სტაფილო ნიგვზით,Морковь с грецкими орехами,Carrots with walnuts</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFU4wLsPNuKRExT8wFpiMDb_ZlQcv_HcGbNLdGpPLN95O6NgNkkkwWDQo&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ფხლების ასორტი,Разнообразные листья,Assorted leaves</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPwT8bDdM83p9RA_ZwOL3iwPObwlt7OzeTBlQNPZzNKpp0bLnkSK3k5XY&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის სალათი,Куриный салат,Chicken salad</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS098KYEPJv5skw3kNMyIxECr0V0lY-elz6Na4RBUJ5MJi0mygWaAwsojnB&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის სალათი სოკოთი,Куриный салат с грибами,Chicken salad with mushrooms</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvZ7Kg-6FWd43UZ17kJWiz5A1-c0c4thJVRz6zyZgHA8smxooc907Vcr8&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყველი იმერული,имеретийский сыр,Imeretian cheese</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%A7%E1%83%95%E1%83%94%E1%83%9A%E1%83%98%E1%83%A1_%E1%83%90%E1%83%A1%E1%83%9D%E1%83%A0%E1%83%A2%E1%83%98_40FMqBw.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყველის ასორტი,Ассорти из сыров,Assorted cheese</span><span class="dish-price">22₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjLgvqS6NzlFGyfcEf-AGYVp0SxjzF6E9D-yuxGSJUyw&s" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყველი სულგუნი,Сыр сулгуни,Sulguni cheese, </span><span class="dish-price">18₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9E1nhVn3JpNHfahmL7QkJSyGuLrOdzoGqh3TjVsYPJ_XjJHSmxoUoZ00&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყველის დაფა,Сырная тарелка,Cheese board</span><span class="dish-price">40₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://nikorasupermarket.ge/modules/current_promotions/uploads/9243.png" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">შებოლილი ყველი,Копченый сыр,Smoked cheese,</span><span class="dish-price">20 ₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUjKBYLTlT_U1E5kj7EbIXyGBUUt8ZGGSRVPFrJqU3dmGHzBsR5rzU9Qk&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჭარხლის ფხალი ნიგვზით,Свекольное пюре с грецкими орехами,Beetroot puree with walnuts</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://lui.coffee/wp-content/uploads/2021/02/3k8a4396-scaled.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ცეზარი,Цезарь,Caesar</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk4Gq6JYLKPZUEdLjl8rVqfmpFvT7ZNc6YxOWRT4-CnauGmX13zIivSrM&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ცეზარი ქათმის,Цезарь с курицей,Chicken Caesar</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS45SaL48pn0n8UeoyQj6lced1-D3r7xKzZqa8rMQ5wwOYkyhi2ezysKjrs&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ცეზარი პარმეზანის ყველით,Цезарь с сыром пармезан,Caesar with Parmesan cheese</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPRWALhTO-pMo6nvQQxAdSUjb3zDkVY1PRMYKX4bamqg&s" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ცეზარი სამარხვო,пост Цезаря,Caesar's fast</span><span class="dish-price">16₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPRWALhTO-pMo6nvQQxAdSUjb3zDkVY1PRMYKX4bamqg&s" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ცეზარი კრევეტებით,Цезарь с креветками,Caesar with shrimp</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQuMI-8NnD75JqJauPnTiMKquCoAHzROLllFpZkZIk_QZ8s9EGKkWlpNA&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ცეზარი ორაგულით,Цезарь с лососем,Caesar with salmon</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- SALADS -->
+  <section class="category" id="salads">
+    <div class="cat-head">
+      <span class="cat-num">02</span>
+      <h2 class="cat-title">ცომეული мучные блюда</h2>
+    </div>
+    <p class="cat-sub">flour dishes</p>
+    <div class="dish-grid">
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/images/123_KyrIqbE.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">აჭარული ხაჩაპური,Аджарян Хачапури,Adjarian Khachapuri</span><span class="dish-price">16₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXTkraQF-GnhTW8QOUvazX1C20DlTeKQ-7Nths_DnUJhhtt-jr4AVk2GiS&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">აჭარული ხაჭაპური ცომ გამოცლილი,Аджарский хачапури с тестом,Adjarian khachapuri with dough</span><span class="dish-price">18₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://imageproxy.wolt.com/menu/menu-images/6789913c2615e9e051cf70ae/cc0be7c0-d45f-11ef-ae9d-eacbb2f7da16__27________________.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">აჭარული ხაჭაპური ლობიოთი,Аджарский хачапури с фасолью,Adjarian khachapuri with beans</span><span class="dish-price">16₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3R1R-BLsMt76IdW_trcMrFeaihXTLpWTgmsjJ_JSad2Fbu4wIs3d0QYgB&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხაჭაპური სამეფო,Королевство Кхачапури,royal khachapuri</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu1nS9b90k32QSUXAHijiBjpUSpBgUuJ3q2wTxcjJUwVUReOv8fS5IX1E&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხაჭაპური მეგრული,Хачапури Мингрелиан,Khachapuri Mingrelian</span><span class="dish-price">22₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://forbes.ge/wp-content/uploads/2023/09/4-2023-09-29T184646.203.jpg"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხაჭაპური იმერული,Хачапури Имеретиан,Khachapuri Imeretian</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrsojKIslkguBsQ3HJ7J3i45B-foAgSiJ-ygeam0Wj-179Htlh8ixe6SJ&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხაჭაპური შამფურზე სულგუნით,Хачапури на вертеле с сулугуни,Khachapuri on a skewer with sulguni</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gastronomia.ge/wp-content/uploads/2019/04/jgkik.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">გურული ღვეზელი,Пирог с гурианом,Gurian pie</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_PpHLNY0GmCa6vLYwTrGq8gZsTJukbbxbLKJ6cFAYVYyE1-MauECAvxU&s=10"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ლობიანი,Фасоль,Bean</span><span class="dish-price">16₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/images/White-Bread_10.bsb_.jpg"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">პური,Хлеб,Bread</span><span class="dish-price">3₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpWhpwBicAikOA3bv_sAEpZJHEmP0KeBn_e7lAK5m4DQwkkFxhpO1HRl0&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">პიცა პეპერონი,Пицца пепперони,Pepperoni pizza</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuhGIHVE7pofx_160fg5JvYkeeankLktZPfPp7darfhg&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">პიცა კონიაკი,Пицца Коньяк,Pizza Cognac</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFIeQFn70vctVTa6EWFk9EQDQzgS-ys8fZrrEIf85ER2Y1u-4oiuFZ0EI&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">პიცა კომბინირებული,Комбинированный набор пиццы,Pizza combo</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDug-xw--Vf_PPrN6FJHZAdI4Jki8mgPxXvO8M8CAkMWtuCNzOiojgWGQ&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">პიცა მარგარიტა,Пицца Маргарита,Pizza Margherita</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCQ0IWmcSoSr2PJ_-YjJ9X9yTxvTINknpAsKmiNX1XK3jM29DxqUER7zKc&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">პიცა სამარხვო,Пицца для поста,Pizza for fasting</span><span class="dish-price">18₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://fiber.ge/wp-content/uploads/mchadis-recepti.webp"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მჭადი,МчаДи</span><span class="dish-price">3₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://cdn.tasteatlas.com/images/dishes/2a25f974a1d2415abd8338e1d50a649a.jpg?w=600"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჭვიშტარი,Чвиштари,Chvishtari</span><span class="dish-price">5₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/images/b228c117a389.jpg"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჭვიშტარი კეცზე,Чвиштари о Кетси,Chvishtari on the Ketsi</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://cdn.ambebi.ge/media/images/2021/11-11/nikora1-45142.jpg"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">პელმენი ქოთანში,Пельмени в горшочке,Dumplings in a pot</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/_thumb/uploads/2024/11-06/40415d66197e5267694218becea45f2e-1730884183.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხინკალი ქალაქური,город Хинкали,khinkali kalakuri</span><span class="dish-price">1,50₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Khinkali_551.jpg"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხინკალი საქონლის,Говядина хинкали,Beef khinkali</span><span class="dish-price">2,50₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsurXTWu94J136Yn7_ED82AvHp7WQJnsEGPWelczo6Hw_gkKSL6q7F7eU9&s=10"კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხინკალი ყველის,Хинкали с сыром,Khinkali with cheese</span><span class="dish-price">2,50₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOT DISHES (priority category) -->
+  <section class="category" id="hot-dishes">
+    <div class="cat-head">
+      <span class="cat-num">03</span>
+    </div>
+      <h2 class="cat-title">ცხელი კერძები,Горячие блюда</h2>
+  <div class="dish-grid">
+  <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_lxw6j1b6I16hfpMZ6-lXp10cdrsTXfu_t4HJqW-eWzYpA7jggclgiN2_&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">აფხაზურა კეცზე,Абхазский на кетце,Abkhazian on the ketz</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6H2QqVHtP6trb81WeeGWIZGFh_Lv0IhjwOXaXE3w7r7dCAciGqBTJMeQ&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">აჯაფსანდალი,Аджапсандал,Ajapsandal</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGHRiEaEznSnBW5eur3NPAB-DFYi2fr_fIZDb5UC_gcg&s" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">აპოხტი,Апокхти,Apokhti</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwqT5ozc0KUGCIXoZmdv4PX5rQbWBgPlC1mL0JxnfAZ79RGqGZCW-GgC3i&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბადრიჯანი ბრინჯით და ყველით,Баклажаны с рисом и сыром,Eggplant with rice and cheese</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI8-rr2YAyMrod00BUCnk8Hs66uAND0UBr-X5pheJ_emTiF2m46ZWc52E&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბადრიჯანი ყველით და სოკოთი,Баклажаны с сыром и грибами,Баклажаны с сыром и грибами</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR46aKHsU8PtKE7oavz6wg-UkoP-k-QMUCQxXuT2rwOfdexM5GnO7s6XBOX&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბადრიჯანი ხორცით სოკოთი და ყველით კეცზე,Баклажаны с мясом, грибами и сыром в булочке,Eggplant with meat, mushrooms and cheese on a bun</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://www.gurmania.ge/gallery/4000025648.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბიფსტროგანოვი,Бефстроганов,Beef Stroganoff</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/uploads/l.modebadze%40palitra.ge/2018/05/23/blinebi6.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბლინები,</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLsEff85Jvu3SS_UQZc3kou3k8slndHm9VE8rXyRrKwrAzZQ6l1vlKl-I&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">დედლური,Дед Лу Ри,DEDLURI</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqwT17MKbKdqfosvDkII4O_QxjJzRGEVItFKIOnr9b9x6ScneP0duBeRy7&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ელარჯი,Эларджи,Elarji</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpNP1whfsNHJSLQlDrBEXWC4n-wgRra7a7pbFTrVNg8H3HQ-7hC9aETQ5W&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყაფლამა,Кафлама,Kaflama</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://visitajara.com/storage/gastronomy/7MpsfmjzI9WKFswMGSCBxqV4iad0wKfuaGFfHUVr.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">იახნი,ЯкНи,iakhni</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://i.ibb.co/Wd7yShX/image" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყველჩაყრილი,Начинка из сыра,Stuffed with cheese</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://europroduct.ge/upload/Untitled_1_069f082a.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჟულიენი,Жюльен,Julien</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAs56A5ZaDvnPB7JuK96V4CZXLTyZHoPcaRJbTzCzKTgm_7xH-c4IyAQ4&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კარტოფილი მექსიკურად,мексиканский картофель,Mexican potatoes</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%99%E1%83%90%E1%83%A0%E1%83%A2%E1%83%9D%E1%83%A4%E1%83%98%E1%83%9A%E1%83%98_%E1%83%A4%E1%83%A0%E1%83%98_kESfe6k.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კარტოფილი ფრი,картофель фри,French fries</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa6YEViR-RLGvAuUErQJPJQU5hUXZJgTh69oDFxiZA-dV_urbdA2vIdpo&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სინორი,Сынори,Sinori</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa_WCT7AUVTqKAcaY5LEYtKL2iUXe6lb8NYEGGD-yPxtK0SRzm6855GR0&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჩირბული,Чирбули,Chirbuli</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://imageproxy.wolt.com/assets/69947877b353386403c22133" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კატლეტი გარნირით,Котлета с гарниром,Cutlet with garnish</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmsQEE3_H-RjGeEq-jQXratxbV1u7fff1T3jYeVFM4hfaP0B02dnVrERU&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კატლეტი კიეური,Котлета Кьёр,Cutlet Kieur</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://georgianjournal.ge/media/images/georgianews/2015/September/Cuisine/kupati.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კუპატი კეცზე,Купати на Кете,Kupati on the Ket</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoc2LHej2B4tJXy6gXst7bs07J6B6gJMacw7Gl8WCzVNXP2DLWqRFq_mNM&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მაჯუნი,Маджунь,Madzhun</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://adjika.ge/wp-content/uploads/2021/10/%D0%BE%D0%B4%D0%B6%D0%B0%D1%85%D1%83%D1%80%D0%B8.jpeg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ოჯახური ღორის,Семейная свинья,ojakhuri with pork</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTncnFnT4WavqncDIJa-_cl0p-4OIshSatbKEXwPCPsxrKAAoCucqix0ZY&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ოჯახური საქონლის,Семейная продукция,ojakhuri with beef</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://i.ytimg.com/vi/595mV871p94/sddefault.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ოჯახურის სოკო,Семейство грибов,ojakhuri with mushrooms</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ48krS-Qpy3zAAaC4JH76HZXNMtZOdL7KXak89M3xAZCx995FCAElaKAA&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ოჯახური ქათმის,Семейный цыпленок,ojakhuri with chicken</span><span class="dish-price">16₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN-pPCs8Y9JhhDJ_NiOpL3DWP7pC4zDyfgnk5dXFKBxBAzMOf71QcIedEW&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ოსტრი,ОсТри,ostr</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+      </div>
+       <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo4BH0KRbMgVMlk9p8-2C0ZwtRo-ON6MqCcVHIfHx903DpqdXj89vUc0Y&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სოკო კეცზე,Грибы на палочке,Mushrooms on a stick</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHTGGKEtpfePOMtqL233lumVxHKnyo4OjJZFpn-iofxGIUDtM5TCwz8pTZ&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სოკო სულგუნით,Грибы с сулгуни,Mushrooms with Sulguni</span><span class="dish-price">18₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYxaT4fq_QQm_nRsBqIXeLQ96CY4kDC3h9FIiJ6Am-Uw&s" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სოკოს საცივი,Грибной соус,Mushroom sauce</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSadPfRkiXx0a95AHdVW7DRItLb5h22bRM6iA6tzblbD_sxGjGQ4EPmA9M&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სპაგეტი კარბონარაСпагетти карбонара,Spaghetti carbonara</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQH0wicwoWAjlG_cXRIAT8u540D5R9BW3S3rZpiIpg7w&s" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">საქონლის გულღვიძლი კეცზე,Говяжье сердце на плите,Beef heart on the stove</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%A8%E1%83%94%E1%83%9B%E1%83%AC%E1%83%95%E1%83%90%E1%83%A0%E1%83%98_%E1%83%A1%E1%83%A3%E1%83%9A%E1%83%92%E1%83%A3%E1%83%9C%E1%83%98_%E1%83%99%E1%83%94%E1%83%AA%E1%83%96%E1%83%94_odXNGaa.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">შემწვარი სულგუნი კეცზე,сулгуни в глиняном горшке,sulguni in a clay pot</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0LseUkkoDPkEHVxctkCK7PpACosPqyC27jFORSjpc8JGtsOyuLyHEFpRH&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათამი მექსიკურად,мексиканская курица,Mexican chicken</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXVxO1Eerr_Ut93zD_PZsIsstdaJU2BqrjmVxOoEUPoYDDa8Fz3UUyTuQ&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის კუჭმაჭში,Курица kuchmachi</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQluWeT8Xno7R5JdPAgaZEjdH44U_Dex74EPOrr8lAFcZ4ZP-yoyR60XKo&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის ლანგეტი გარნირით,Куриный лангет с гарниром,Chicken languette with garnish</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp05_widyR_ZYtLSE-7cYjB5O8TFZMoTHbi_YWozE8N2Gk8dFpZvdel2ZW&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის სტეიკი ყველის სოუსით,Куриный стейк с сырным соусом,Chicken steak with cheese sauce</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://webmenu.ge/storage/23495/cafe-escala_yvelis-chkhirevi.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის ჩხირები გარნირით,куриные палочки с гарниром,chicken stick with garnish</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://gemrieli.ge/katmis_shnitseli_files/---.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის შნიცერი,Куриный шницель,Chicken schnitzel</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://gemrieli.ge/katmis_shnitseli_files/---.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის ჩაშუშული,Курица CHASHUSHULI,chicken stew</span><span class="dish-price">18₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxQFPh0yQ6Cn-TlVqMXXAKX-rzcc7HUFPeGKfNkDvtzqcHLaPAtINXTDFb&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის შქმერული,Курица chkmeruli,chicken chkmeruli</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%AC%E1%83%98%E1%83%AC%E1%83%98%E1%83%9A%E1%83%98_%E1%83%A8%E1%83%94%E1%83%9B%E1%83%AC%E1%83%95%E1%83%90%E1%83%A0%E1%83%98_%E1%83%9B%E1%83%A3%E1%83%AE%E1%83%A0%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">წიწილი,ciplionak,spring chicken</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%AC%E1%83%98%E1%83%AC%E1%83%98%E1%83%9A%E1%83%98_%E1%83%A8%E1%83%94%E1%83%9B%E1%83%AC%E1%83%95%E1%83%90%E1%83%A0%E1%83%98_%E1%83%9B%E1%83%A3%E1%83%AE%E1%83%A0%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">წიწილი ფერმის,Циплоника Ферма,farm chicken</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://bmsdelivery.ge/media/dishes/%E1%83%AC%E1%83%98%E1%83%AC%E1%83%98%E1%83%9A%E1%83%98_%E1%83%A8%E1%83%94%E1%83%9B%E1%83%AC%E1%83%95%E1%83%90%E1%83%A0%E1%83%98_%E1%83%9B%E1%83%A3%E1%83%AE%E1%83%A0%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">წიწილი სოფლის,Циплионак — это деревня,village chicken</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJEFf5-JJRRdqdlXF0byO5nj43MU_FhzHZLuqxbj1xD2px9TxxEurZhb4&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჩანახი,Чанакья,chanakhi</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJEFf5-JJRRdqdlXF0byO5nj43MU_FhzHZLuqxbj1xD2px9TxxEurZhb4&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჩანახი ხორცით ქოთანში,чанакхи с мясом в горшочке,chanakhi with meat in a pot</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://i.ytimg.com/vi/VsOQ-tfz0FE/hqdefault.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჩაქონდრილი-чакондрили-chakondrili</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdPIyBLF7AUH-p1BTcIdQVAeX7CmrxJRz5D0bQvnQa5OhIYr7lyYhljtZi&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჩაშუშული სოკო-Тушеные грибы-Stewed mushrooms</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://gemrieli.ge/khortsi_burgundiulad_files/boeuf-bourguignon.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხორცი ფრანგულად-Мясо по-французски-Meat in French</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRru3G2TJUk-Go54awLUbz9fvJJbWQtSGXMO29bFZgSO0TgVz5UBfWXvZs&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხაშლამა მშრალი-Хашлама сухая-Khashlama dry</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https:/crypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo4BH0KRbMgVMlk9p8-2C0ZwtRo-ON6MqCcVHIfHx903DpqdXj89vUc0Y&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხბო სულგუნში-Телятина в Сульгуни-Veal in Sulguni</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2pTPIR_WZnlTmuWl-dmdfLYpbxUZ1iFRxlATnfvyuCqk5nORfH2mbKvo&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხბოს ნეკნი აჯიკით-Телячьи ребрышки с аджикой-Veal ribs with adjika</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+     <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbwLsA_emMqMvjW_vMrbkRSD7MyB91Ld8BNdrxkSFsx7sOgWwIjgy0Us8&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხბოს მწვადი კეცზე-БАРБЕКЮ ИЗ ТЕЛЯТИНЫ В ГЛИНАЛЬНОМ ГОРШКЕ-VEAL BARBECUE ON A CLAY POT</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+    <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/_thumb/uploads/2024/12-30/chashushuli-1-1735539048.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჩაშუშული ხბოს-ТУШЕНАЯ ТЕЛЯТИНАSTEWED VEAL</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+    <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrsi2y5QyctnwQd5ZCVGNSId3C937DS-zle8F6uvNQfheY4QFrx4SgeHc&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ლობიო ქოთანში,фасоль ,beans in a pot</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+    <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/imagq=tbn:ANd9GcQHMJg7SA4V6l9GzymWdPjGlWPm8LN8wrvKlGMK-igXzKhEHiQMYaEGAjE&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მოხარშული დედალი,вареная деревенская курица,bouled country hen</span><span class="dish-price">80₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+    <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvv65P1LsgrdwaO7edbtcbrnKAIgcUVyPd7qtwqwQzFI_IViSZ3FRPjoWa&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ღომი,Гоми,Ghomi</span><span class="dish-price">5₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+    <div class="dish">
+        <div class="dish-photo"><img src="https://healthy-food-near-me.com/wp-content/uploads/2021/02/recipe-cheese-sticks-calorie-chemical.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყველის ჩხირები,Сырные палочки,Cheese sticks</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+       </div>
+    </div>
+  </section>
+
+  <!-- GRILL -->
+  <section class="category" id="grill">
+    <div class="cat-head">
+      <span class="cat-num">04</span>
+      <h2 class="cat-title">წვნიანი კერძები,Супы</h2>
+    </div>
+    <p class="cat-sub">soud disher</p>
+    <div class="dish-grid">
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtdoApMzlHtttC_A6HNFcNGN0gG9SulfKOs8Gd88lKkbNTMTSmzlvgkHA6&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბორში უკრაინული,Украинский борщ,Ukrainian borscht</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gastronomia.ge/wp-content/uploads/2021/01/1-4-11.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბორში ხორცით,Борщ с мясом,Borsch with meat</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUhij6jgKb09l-Ss2pwZ_tzWjDynEKrwHnB-0m8eL_5ACsBxadGpqJBCq6&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბოსტნეულის სუპი,Овощной суп,Vegetable soup</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC_OT3hUfdMYjGAdVQPMG_gDuSiSCVks7mFcCwYpvOEWv4FmkcRfYNN1o&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">პელმენის სუპი ქოთანში,pelmen soup in a pot</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnogrZihJW4vi_MCIODmoIME2FzQ860Gg9z6qSBGWF3L17I_poMefX1d3w&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სოკოს სუპი,Грибной суп,Mushroom soup</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://i.ytimg.com/vi/0vMgEtGibuk/maxresdefault.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის სუპი,Куриный суп,Chicken soup</span><span class="dish-price">16₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://storage.georgia.travel/images/chikhirtma-gnta-m.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჩიხირთმა,Чикхирта,Chikhirta</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKG2QqqMbFBcaesUwyQSAY-iPCY6fF4i4sNjREo6q32CTgSsQna_PrZMbL&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხბოს ჩაქაფული,Тушеная телятина,Veal stew</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://tsiskvili.ge/files/KggdJARclBxW.webp" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხარჩო,ХаРЧо,KhaRCho</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEMWDG4PcR7F7uXazBURLlGYS8N1dGGmv-qPsbANLksKw4S8obRylfXRE&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხაშლამა წვნიანში,Хашлама в супе,Khashlama in soup</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESSERTS -->
+  <section class="category" id="desserts">
+    <div class="cat-head">
+      <span class="cat-num">05</span>
+      <h2 class="cat-title">კერძები მაყალზე Блюда на гриле</h2>
+    </div>
+    <p class="cat-sub"></p>
+    <div class="dish-grid">
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlu3_G5bgPT7N1PJxca1dWanC_aiMAKDCSOv04MSWNOexby1UAM8fEfvmX&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბოსტნეულის ასორტი მაყალზე,Разнообразные овощи на гриле,Assorted vegetables on the grill</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsNltSFGnD4WKvt9lysTaSUSvGEzgCQ-HB42sHu_fmKbvubhdV7Lv809-d&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ინდაურის ბარკალი მაყალზე,Куриная голень на гриле</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1SeMOajmZ_37-YMHiWr-bILxtEmNaVKNkmLJflnZMmMQYBwjjfu6KA5Zj&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ინდაურის ფრთები მაყალზე,Куриные крылышки на гриле,Turkey wings on the grill</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://cdn.swoop.ge/images/55a7afa9-7a50-404c-af31-f738b9358ea6.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ღორის კარეიკა გარნირით,Свиная вырезка с гарниром,Pork loin with garnish</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST8CcQnC8WtsolV1fyvVUf6OV9QjCtJgO1RgvWv5QfG0EQ7oXsJ2sEDpo&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქაბაბი,Кебаб,Kebab</span><span class="dish-price">17₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7--H57h1HsHuJIu1VntNviKBvMvrg2g3CiUBzEEnHLtpvpeM_72nft2tw&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქაბაბი სულგუნით,Кебаб с сулгуном,Kebab with sulgun</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREGrOVohsyYb1cVVxoDuhQchnTT9jeRNhcZym3xEJXKMc9Bix2THHo_7Ot&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის ბარკალი შამფურზე,Куриные шашлычки на шампуре,Chicken skewers on a skewer</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY3XNgrTo1gc2BizPReQc8nj2kLe2Mf9hWHxyBxnMo5LLPNcq3-wj3Wvs&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ქათმის ფრთები მაყალზე,Куриные шашлычки на шампуре,Chicken skewers on a skewer</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVXC246rqI91CT_g88_dRzkgxcMZvqBmK45h0cgisM894kEnkxftR6FF8&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მწყერი მაყალზე,Перепела на гриле,Quail on the grill</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTafgErKHTpsefFmZVXnQMYKkMmkC20n6jomrB2lDA-2w73-5Mj71O9ggkZ&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხბოს მწვადი,барбекю из телятины,Veal barbecue</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaq8jlbh1l9-0PZWPEMxCTzRxLeguxLFAjqNazpYdN8HFDR4Vn_EWRvB-M&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მწვადის ასორტი,Разнообразные блюда для барбекю,Assorted barbecue</span><span class="dish-price">20₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS07lCLzxGa_xNz8Zqz0eE-fuCMKNZczGwXd2Lj4xos6ohdL6bhRRQSMOM&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სარდელი მაყალზე,Свинина на гриле,Grilled chicken</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://www.rogor.ge/media/articles/611_rogor-movamzadot-goris-xorcis-mwvadi.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხორცის დაფა ქათამი მწვადი 2ც ხბოს მწვადი.2ც ქაბაბი.2ც ქათმის ფრთები 2ც,Мясное ассорти (2 куриных шашлыка, 2 шашлыка из телятины, 2 кебаба, 2 куриных крылышка)</span><span class="dish-price">220₾</span></div>
+          <div class="dish-desc"></div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://rogor.ge/media/articles/624_rogor-movamzadot-qama-soko-shamfurze.jpg" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სოკო მაყალზე,Грибы на гриле,Grilled mushrooms</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDfe7dJizx8MFkCNyxwoqGXpfEebwpj9lATHd1ya4Z621T0THkUTCOT80&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ინდაურის მწვადი,барбекю из индейки,Turkey barbecue</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo9g8xrp4Ry1DtnTNyToxE03Hh0AtQUzvLfo-d5Dn5CC0mTABMHwBHEX6M&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ღორის მწვადი,Барбекю из свинины,Pork barbecue</span><span class="dish-price">19₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkEhgfWvkpA8yFhsNaJHxv26iUj1j4HB0ZFpMDmm2jcAOk4IFHLLfbXwYN&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ღორის ჩალაღაჯი გარნირით,Свиная отбивная с гарниром,Pork chop with garnish</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოკლე აღწერა შემადგენლობაზე და წონაზე</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3rpHvckgST2dl20p87B7cHRa6DbVGvCJkBmhqPt7rSBc3sAC4e9htINvK&s=10" alt="კერძის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კანჭი,kanchi</span><span class="dish-price">130₾</span></div>
+          <div class="dish-desc">კანჭი  გემო, რომელიც არ ჰგავს სხვას</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLD DRINKS (priority category) -->
+  <section class="category" id="cold-drinks">
+    <div class="cat-head">
+      <span class="cat-num">06</span>
+      <h2 class="cat-title">თევზეული,Рыба</h2>
+    </div>
+    <p class="cat-sub">თევზეული</p>
+    <div class="dish-grid">
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnCTsXyx1oJoE_jkLLURmCI4ARI5y_ulrrEODn2CUIwi6WXDpqVGHjVXw&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ასეტრინა მწვადი 350გ,барбекю Асетрина,Asetrina barbecue 350g</span><span class="dish-price">50₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9X3kkmjADPBKTBedFLh2IQpnHBNIEO0F2gAZ5_xeV-avWs_JWMi_W151a&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ასეტრინა მთლიანი,Асетрина целиком,Asetrina whole</span><span class="dish-price">150₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc-rvFZWbiWBJdt0c76eZSyZWXh5NKQULvPdtmwtPgySe2yS5LXZNjXx0&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ბარაბულკა,Барабулка,Barabulka</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7kAoyeNBVIZaLTEg4imLrgtFMwVOKRYFoAKk5NXGAWsURP4MlWOwGUOk&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">დორადო,Дорадо,Dorado</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://bernard.ge/wp-content/uploads/2020/08/kalmaxi.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კალმახი,Форель,Trout</span><span class="dish-price">20-30₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTQ613RR6FlOropA2dMLM-bmmO5Yc2nU3KPQgZovJ2VnOwNhHVoOTT7r2W&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ზუთხის მწვადი,Барбекю из осетра,Sturgeon barbecue</span><span class="dish-price">55₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLNgUQbZlw81hyJ3iSBu0c6JNQzuP9i8bfQH16h6iN3Q&s" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კალმახი ნიგვზით,Форель с грецкими орехами,Trout with walnuts</span><span class="dish-price">25-30₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM7fNvFf9889XIlmEB-qnGoUOBJ-vDd4ifGsmuVbAgdDqUJIj3ptDxMwE&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კალმახი ბეკონით,Форель с беконом,Trout with bacon</span><span class="dish-price">40₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https:///uploads/2020/08/kalmaxi.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კალმახი ნარშარაფის სოუსით,Форель с соусом наршараф,Trout with walnut sauce</span><span class="dish-price">25-30₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKYcSe2YDm0LSy0jE9r_akExABwD86RPF_ViJOx4aZAiEnPH_1Fwm04k&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სტავრიდა,Stavrida</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://fishbatu.ge/files/products/u1cP74mLNiiJi83i9ScDv9zSbpHmQ3.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კეფალი ნიგვზით,Кефаль с грецкими орехами,Mullet with walnuts</span><span class="dish-price">25-30₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ-8DHCVXQ65YlvEM_ch7OTNRYnhBM4nvxN1xFIHeGG67Dkw9nV9uq7yR3&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მთლიანი ორაგული2.5kg,Целый лосось2,5kg,Whole salmon2.5kg</span><span class="dish-price">100₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://bernard.gcontent/uploads/2020/08/kalmaxi.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">თევზის დაფა ბარაბულკა1 სტავრიდა 1 კეფალი 1კალმახი 1ორაგული 1 სიბასი 1
+,Рыбная тарелка: красный окунь 1, ставрида 1, кефаль 1, форель 1, лосось 1, морской окунь 1,Fish plate Redfish 1 Horse mackerel 1 Mullet 1 Trout 1 Salmon 1 Sea bass 1</span><span class="dish-price">250₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/images/stories/krevetebi.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კრევეტები ხოლმორინეს სოუსით,Креветки с соусом Кольморин,Shrimps with Kholmorine sauce</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC3wbyqQ1FGgHDVJsRBH_t1CY5OVzoofUmQ44AIU8HJTYBhpunPLY2uD-7&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კამბალას მწვადი,Камбала, приготовленная на гриле,Barbecued flounder</span><span class="dish-price">50₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP5pvo-7DxqB1Syynw2ONA0POs7R3ykzEZP0o-Ev8CclI_1hGHJ_ZcCqph&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კეფალი,Кефаль,Mullet</span><span class="dish-price">20-30₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfaOrKWhvQ6ZPy2bTRQJqWFkj84jXuI27BfUqZQyE9HEtCuFzpnXdsam2B&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მიდიები ღვინოში,Мидии в вине,Mussels in wine</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6CcLhjK_-w5lTqUkjnaK5Nz71lmdE09Zl5WajAosntgLkNYnujLFybbNE&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ორაგული ბაჟეში,Лосось бадже,Salmon bajé</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://fishbatu.ge/files/products/8CBXHLI9sJQgDfv4IWBrO5wo4hxtHu.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ორაგულის სტეიკი,Стейк из лосося,Salmon steak</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://fishmarket.ge/images/thumbs/0002005_black-sea-red-mullet-1-kg_360.png" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სარღანა,Саргана,Sarghana</span><span class="dish-price">40₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://fishbatu.ge/files/products/CdcRBoTBCK6myxRRcSkTAXzElCrsUm.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">სიბასი,sibasi</span><span class="dish-price">35₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAY3gER4SFxkIWWdlIRPEzm7YIxfGRbJrSkrImbR-UJp51LrqmlPrbIwc&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">თევზის ფილე,Рыбное филе,Fish fillet</span><span class="dish-price">30₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOT DRINKS -->
+  <section class="category" id="hot-drinks">
+    <div class="cat-head">
+      <span class="cat-num">07</span>
+      <h2 class="cat-title">დილის საუზმე завтрак</h2>
+    </div>
+    <p class="cat-sub">ყავა და ჩაი</p>
+    <div class="dish-grid">
+      <div class="dish">
+        <div class="dish-photo"><img src="https://funtime.ge/files/2023/06/23/9634/chais-sargebeli_w_h.jpeg"სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ჩაი,Чай,Tea</span><span class="dish-price">3₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbLOrnBVG9GwE7gzCSzCLo0zhuWfDtAbMqAlQ2LxBhkCAzqHePv2P9tjt&s=10"სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ნატურალური წვენი 1ჭ./1ლ.,Натуральный сок 1 ст. л./1 л.,Natural juice 1 tbsp./1 l.</span><span class="dish-price">5-15₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://cdn.fortuna.ge/app/uploads/2022/07/capture-2022-07-25_15-05-47_570850.jpg"სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყავა შავი,Черный кофе,Coffee black</span><span class="dish-price">3₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://mkurnali.ge/media/_thumb/images/new_images/arajani-2.webp" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">არაჟანი,Сметана,Sour cream</span><span class="dish-price">5₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/uploads/m_shengelia3%40cu.edu.ge/2020/10/12/padevyj-med.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">თაფლი,Мед,Honey</span><span class="dish-price">7₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ38rJAb-XFGpFSdeKfBEOMA13cHCNboeMjZB21cIWDwnTP64RH1-TlOVs&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ზეთის ხილი,Оливковое масло,Olive oil</span><span class="dish-price">7₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://www.vidal.ge/assets/uploads/68/684abb73010616fc99b4e76f2786c716277f1eb4.jpg"სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კარაქი,Масло,Butter</span><span class="dish-price">5₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://samzareulo.net/uploads/posts/2020-11/1606643000_legvis-muraba.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მურაბა,Джем,Jam</span><span class="dish-price">5</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://shenisilamaze.ge/wp-content/uploads/2024/08/1-2023-11-16T150055949.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მოხარშული კვერცხი 6ც,Варёное яйцо, 1 шт.,Boiled egg 1 pc.</span><span class="dish-price">1,00₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://qr.autobazroba.com/wp-content/uploads/2023/12/%E1%83%A7%E1%83%95%E1%83%94%E1%83%99%E1%83%A3-%E1%83%98%E1%83%9B%E1%83%94%E1%83%A0%E1%83%A3%E1%83%9A%E1%83%98.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ყველი იმერული,имеретийский сыр,Imeretian cheese</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT2CCReibpsny-CjtAesLeR3Fjh9Eo2EVXR15tYzeNscolYQYUwcZeCug&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ძეხვის ასორტი,Разнообразные колбаски,Assorted sausages</span><span class="dish-price">25₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtpT-xbs8XhGb0_duMAgocNSIVh-R-3Sj8_HGs5r9hi0b3WpNMbQRj_nU&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ხიზილალა,Икра,Caviar</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiysYdpca87W868Wpy0okUiozJcqNqyIAHtoSh7z8Dyhhu7y3T8rFnaR8w&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ვერმიშელი,Вермишель,Vermicelli</span><span class="dish-price">8₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://marao.ge/media/_share/fb/images/sakitxavi/siaxle/oqtomberi/makaroni_1200x630_50x50.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მაკარონი,Паста,Pasta</span><span class="dish-price">8₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHngzIp9_P5BrEP4hkgZP0o7LAHaEfNx1BNavrHoC-h1LYkXpGqcEN9QZl&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მაკარონი ყველით,Паста с сыром,Pasta with cheese</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/images/%E1%83%9B%E1%83%90%E1%83%9C%E1%83%98%E1%83%A1_%E1%83%A4%E1%83%90%E1%83%A4%E1%83%90.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მანიქაში,Манькашი,Mankash</span><span class="dish-price">8₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZO_Aw0BATo619OBzQMunvoXZepZu8I2_H-tBHSqB7E5teulCoQwGZVAA&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">წიწიბურა,Гретсневая Каша,Buckwheat</span><span class="dish-price">8₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/images/1_jzXcaUR.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">შვრის ფაფა,Налить кашу,Pour porridge</span><span class="dish-price">8₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwoHAdRJ3vx-9dauZGeJH1e8ZwtK7uirSdu6BfH4QlVg&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">კარტოფილის პიურე,Картофельное пюре,Mashed potatoes</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://gemrielia.ge/media/images/stories/omleti.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ომლეტი,Омлет,Omelette</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTybk2ECRirm-tC1wG-Az6hiU9pyZyLHzxeAp5XZxBUbOvY9BOhlYl1mZs&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ომლეტი ყველით,Омлет с сыром,Omelette with cheese</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2QKfivqA46g3p4i8ev2k2wr2jJx5H2l5T7BZPkQQW0kCTPX5SuPvJCljN&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ომლეტი ყველით და პომიდორით,Омлет с сыром и помидорами,Omelette with cheese and tomatoes</span><span class="dish-price">10₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://www.onima.ge/images/com_hikashop/upload/2.jpg" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">მოხარშული სოსისი 6ც,Варёное яйцо, 6 шт.,Boiled egg 6 pc.</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE9_mxFoPsA5pmGcRRVpI-UCHLTAdLWTxrtCgTwExfBadQvu1Nd0rZwBk&s=10" alt="სასმელის ფოტო"></div>
+        <div class="dish-body">
+          <div class="dish-top"><span class="dish-name">ომლეტი სოსისით,Омлет с колбасой,Omelette with sausage</span><span class="dish-price">15₾</span></div>
+          <div class="dish-desc">მოცულობა და მოკლე აღწერა</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-mark">სანაპირო · ქობულეთი</div>
+    <div class="footer-contact">
+      <div style="display:flex; align-items:center; gap:8px; justify-content:center; margin-bottom:8px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>თამარ მეფის 1, ქობულეთი</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; justify-content:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>514 62 09 09 · 558 313 186</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('nav.dock button');
+  const sections = document.querySelectorAll('section.category');
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = document.getElementById(btn.dataset.target);
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        buttons.forEach(b=>b.classList.remove('active'));
+        const active = document.querySelector(`nav.dock button[data-target="${entry.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-30% 0px -60% 0px'});
+
+  sections.forEach(sec=>observer.observe(sec));
+</script>
+
+</body>
+</html>
